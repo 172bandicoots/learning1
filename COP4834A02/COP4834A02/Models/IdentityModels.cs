@@ -29,5 +29,9 @@ namespace COP4834A02.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<COP4834A02.Models.ContactForm> ContactForms { get; set; }
+
+        // public System.Data.Entity.DbSet<ContactForm.Models.Contact> Contacts { get; set; }
     }
 }

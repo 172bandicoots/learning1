@@ -1,13 +1,23 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Need more information?  Fill out the form.";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<img src="http://www.josecolmentersdesigns.com/wp-content/uploads/2015/07/Bye-Bye-hipster.jpg" />
 
+
+<a href="http://cop4834a1crawf.azurewebsites.net/ContactForms/Create">Click here to leave a message</a>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+
+<h2>We have solutions.</h2>
 <address>
-    <h2></br>We have solutions.</br></h2>
+    
     <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@172bandicoots.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@172bandicoots.com</a>
 </address>
