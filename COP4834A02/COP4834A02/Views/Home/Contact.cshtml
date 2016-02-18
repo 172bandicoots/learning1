@@ -1,23 +1,21 @@
 ﻿@{
-    ViewBag.Title = "Need more information?  Fill out the form.";
+    ViewBag.Title = "Need more info?";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-
-
-<a href="http://cop4834a1crawf.azurewebsites.net/ContactForms/Create">Click here to leave a message</a>
-
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-
-
-<h2>We have solutions.</h2>
+<img src="http://vignette3.wikia.nocookie.net/marbleblast/images/6/6c/Question-mark.png/revision/latest?cb=20130629230235" />
+<br/><br/>
+<p><a style="align-self: center" href="/ContactForms/Create" class="btn btn-primary btn-lg">Leave a messsage &raquo;</a></p>
+<br/>
+<br/>
 <address>
-    
+    <p>From humble beginnings at<br/>
+    1313 Mockingbird Lane <br/>
+    Mockingbird Heights <br/>
+    Los Angeles, CA <br/>
+    </p>
     <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@172bandicoots.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@172bandicoots.com</a>
 </address>
+

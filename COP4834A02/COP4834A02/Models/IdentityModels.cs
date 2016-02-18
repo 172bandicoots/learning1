@@ -32,6 +32,8 @@ namespace COP4834A02.Models
 
         public System.Data.Entity.DbSet<COP4834A02.Models.ContactForm> ContactForms { get; set; }
 
+      //  public System.Data.Entity.DbSet<COP4834A02.Models.States> States { get; set; }
+
         // public System.Data.Entity.DbSet<ContactForm.Models.Contact> Contacts { get; set; }
     }
 }
