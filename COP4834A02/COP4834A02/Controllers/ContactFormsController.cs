@@ -25,6 +25,7 @@ namespace COP4834A02.Controllers
         {
             if (id == null)
             {
+                //HttpStatusCode.BadRequest
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ContactForm contactForm = db.ContactForms.Find(id);
@@ -52,8 +53,8 @@ namespace COP4834A02.Controllers
             {
                 db.ContactForms.Add(contactForm);
                 db.SaveChanges();
-                // return RedirectToAction("Index"); //redirect
-                return RedirectToRoute(new { controller = "Home", action = "Index" });
+                return RedirectToAction("Index"); //redirect
+                //return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
 
             return View(contactForm);

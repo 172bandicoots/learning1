@@ -25,7 +25,6 @@ namespace COP4834A02.Models
         [Required, StringLength(25), Display(Name = "City")]
         public string City { get; set; }
 
-        ///WORKING ON ///////////////////////////////
         [Required, Display(Name = "State")]
         public String State { get; set; }
 

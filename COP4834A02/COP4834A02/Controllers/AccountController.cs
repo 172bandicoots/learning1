@@ -151,6 +151,15 @@ namespace COP4834A02.Controllers
         {
             if (ModelState.IsValid)
             {
+                //added for reCaptcha no yet implemented see 
+                // https://www.youtube.com/watch?v=HcSEU_BZwDw
+                //  string EncodedResponse = Request.Form["g-Recaptcha-Response"];
+                //  bool IsCaptchaValid = (ReCaptchaClass.Validate(EncodedResponse) == "True" ? true : false);
+                //   if (IsCaptchaValid) { }
+
+
+
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

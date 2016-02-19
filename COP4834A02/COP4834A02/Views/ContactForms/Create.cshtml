@@ -46,18 +46,13 @@
                 @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
             </div>
         </div>
-        <!--STATE FIELD IS A PAIN-->
         <div class="form-group">
             @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-10">          
+                @Html.DropDownListFor(model => model.State, COP4834A02.Helpers.Extensions.GetStatesList(), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
-            </div>
+             </div>
         </div>
-   
-
-        <!-- STATE FIELD IS A PAIN-->
-
         <div class="form-group">
             @Html.LabelFor(model => model.Zipcode, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -65,6 +60,8 @@
                 @Html.ValidationMessageFor(model => model.Zipcode, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="g-recaptcha" data-sitekey="6Lf5qxgTAAAAAOoJRnk5RuOooL4SH4_ZtXK3gcnK"></div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -94,9 +91,17 @@
             @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.Message, 5,50 , new { htmlAttributes = new { @class = "form-control" } })
+                <br/>
                 @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        
+       <!-- <div class="form-control">
+            not yet implemented re-Captcha
+            <div class="g-recaptcha" data-sitekey="6Lf5qxgTAAAAAOoJRnk5RuOooL4SH4_ZtXK3gcnK"></div>  
+        </div> -->
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -107,7 +112,7 @@
 }
 
 <div>
-    <!-- @Html.ActionLink("Back to List", "Index") -->
+    @Html.ActionLink("Click for Index", "Index")
 </div>
 
 @section Scripts {
