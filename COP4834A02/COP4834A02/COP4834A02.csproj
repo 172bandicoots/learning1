@@ -229,14 +229,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\State.cs" />
-    <Compile Include="Migrations\201602190104449_R1.4.cs" />
-    <Compile Include="Migrations\201602190104449_R1.4.Designer.cs">
-      <DependentUpon>201602190104449_R1.4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602190344167_R1.5.cs" />
-    <Compile Include="Migrations\201602190344167_R1.5.Designer.cs">
-      <DependentUpon>201602190344167_R1.5.cs</DependentUpon>
+    <Compile Include="Helpers\States.cs" />
+    <Compile Include="Migrations\201602241800140_R20.cs" />
+    <Compile Include="Migrations\201602241800140_R20.Designer.cs">
+      <DependentUpon>201602241800140_R20.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -281,7 +277,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -321,6 +319,7 @@
     <Content Include="Views\ContactForms\Details.cshtml" />
     <Content Include="Views\ContactForms\Edit.cshtml" />
     <Content Include="Views\ContactForms\Index.cshtml" />
+    <Content Include="Views\ContactForms\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -337,11 +336,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602190104449_R1.4.resx">
-      <DependentUpon>201602190104449_R1.4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602190344167_R1.5.resx">
-      <DependentUpon>201602190344167_R1.5.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602241800140_R20.resx">
+      <DependentUpon>201602241800140_R20.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

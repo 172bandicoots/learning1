@@ -7,13 +7,13 @@ namespace COP4834A02.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class R14 : IMigrationMetadata
+    public sealed partial class R20 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(R14));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(R20));
         
         string IMigrationMetadata.Id
         {
-            get { return "201602190104449_R1.4"; }
+            get { return "201602241800140_R20"; }
         }
         
         string IMigrationMetadata.Source

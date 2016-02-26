@@ -8,6 +8,7 @@ namespace COP4834A02.Controllers
 {
     public class HomeController : Controller
     {
+        
         public ActionResult Index()
         {
             return View();

@@ -7,12 +7,12 @@
 <h2>Leave a Message</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-      
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -48,10 +48,10 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">          
+            <div class="col-md-10">
                 @Html.DropDownListFor(model => model.State, COP4834A02.Helpers.Extensions.GetStatesList(), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
-             </div>
+            </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Zipcode, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -61,7 +61,7 @@
             </div>
         </div>
 
-        <div class="g-recaptcha" data-sitekey="6Lf5qxgTAAAAAOoJRnk5RuOooL4SH4_ZtXK3gcnK"></div>
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -90,18 +90,16 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Message, 5,50 , new { htmlAttributes = new { @class = "form-control" } })
-                <br/>
+                @Html.TextAreaFor(model => model.Message, 5, 50, new { htmlAttributes = new { @class = "form-control" } })
+                <br />
                 @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        
-       <!-- <div class="form-control">
-            not yet implemented re-Captcha
-            <div class="g-recaptcha" data-sitekey="6Lf5qxgTAAAAAOoJRnk5RuOooL4SH4_ZtXK3gcnK"></div>  
-        </div> -->
 
+        <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6Lf5qxgTAAAAAOoJRnk5RuOooL4SH4_ZtXK3gcnK"style="transform:scale(1);-webkit-transform:scale(1);transform-origin:50 0;-webkit-transform-origin:50 0;"></div>
+       </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

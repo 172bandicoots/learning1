@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using COP4834A02.Models;
+using Newtonsoft.Json;
 
 namespace COP4834A02.Controllers
 {
@@ -15,12 +16,20 @@ namespace COP4834A02.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ContactForms
+      
         public ActionResult Index()
         {
             return View(db.ContactForms.ToList());
         }
 
+        //GET: Confirm page
+        public ActionResult Confirm()
+        {
+            return View("Confirm");
+        }
+
         // GET: ContactForms/Details/5
+        [Authorize()]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +46,7 @@ namespace COP4834A02.Controllers
         }
 
         // GET: ContactForms/Create
+      
         public ActionResult Create()
         {
             return View();
@@ -51,16 +61,29 @@ namespace COP4834A02.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ContactForms.Add(contactForm);
+                string EncodedResponse = Request.Form["g-recaptcha-Response"];
+                bool IsCaptchaValid = (ReCaptchaClass.Validate(EncodedResponse) == "True" ? true : false);
+                if (IsCaptchaValid)
+                {
+
+                 db.ContactForms.Add(contactForm);
                 db.SaveChanges();
                 return RedirectToAction("Index"); //redirect
-                //return RedirectToRoute(new { controller = "Home", action = "Index" });
+                                                  //this will redirect back to start page :-)
+                                                  //return RedirectToRoute(new { controller = "Home", action = "Index" });
+                }
+                else
+                {
+                    TempData["recaptcha"] = "Please verify that you are not a robot";
+                }
+             
             }
 
             return View(contactForm);
         }
 
         // GET: ContactForms/Edit/5
+        [Authorize()]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -92,6 +115,7 @@ namespace COP4834A02.Controllers
         }
 
         // GET: ContactForms/Delete/5
+        [Authorize()]
         public ActionResult Delete(int? id)
         {
             if (id == null)
