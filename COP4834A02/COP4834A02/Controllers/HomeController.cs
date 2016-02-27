@@ -6,10 +6,11 @@ using System.Web.Mvc;
 
 namespace COP4834A02.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
-        
-        public ActionResult Index()
+
+            public ActionResult Index()
         {
             return View();
         }
