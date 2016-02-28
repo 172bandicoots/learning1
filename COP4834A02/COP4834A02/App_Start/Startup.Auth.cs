@@ -54,15 +54,20 @@ namespace COP4834A02
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+                app.UseFacebookAuthentication(
+                appId: "1669484353334619",
+                appSecret: "11be1b824511c9aa434f5f8390b0855f");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+        /*    app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "997622318433-dt8ksmb0jbsvpg1bvh5u4vugn54drujf.apps.googleusercontent.com",
+                ClientSecret = "PURQ2SraLtVSm_B8ir91k-xq"
+            });
+
+    */
+
+
+
         }
     }
 }
