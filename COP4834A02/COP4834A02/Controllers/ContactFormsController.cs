@@ -74,7 +74,7 @@ namespace COP4834A02.Controllers
                 }
                 else
                 {
-                    TempData["recaptcha"] = "Please verify that you are not a robot";
+                    //TempData["recaptcha"] = "Please verify that you are not a robot";
                 }
              
             }
