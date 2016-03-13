@@ -7,7 +7,9 @@
 <h2>Class Roster Join Table</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <ul>
+        <li>@Html.ActionLink("Add a student to a Course", "Create")</li>
+    </ul>
 </p>
 <table class="table">
     <tr>
@@ -23,23 +25,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SectionTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CourseID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RosterID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RosterID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RosterID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RosterID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RosterID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RosterID })
+            </td>
+        </tr>
+    }
 
 </table>
