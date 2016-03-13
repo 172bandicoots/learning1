@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace COP4834SchoolDatabase.Models
+namespace COP4834SchoolDatabase2.Models
 {
     public class Student
     {
@@ -12,6 +12,7 @@ namespace COP4834SchoolDatabase.Models
         public int StudentID { get; set; }
 
         [Display(Name = "Student Name"), Required]
-        public String StduentName{ get; set; }
+        public String StudentName { get; set; }
+
     }
 }

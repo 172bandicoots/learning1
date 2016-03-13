@@ -4,9 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace COP4834SchoolDatabase.Models
+namespace COP4834SchoolDatabase2.Models
 {
-    public class SchoolDatabaseContext : DbContext
+    public class db2Context : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -15,10 +15,14 @@ namespace COP4834SchoolDatabase.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public SchoolDatabaseContext() : base("name=SchoolDatabaseContext")
+        public db2Context() : base("name=db2Context")
         {
         }
 
-        public System.Data.Entity.DbSet<COP4834SchoolDatabase.Models.Book> Books { get; set; }
+        public System.Data.Entity.DbSet<COP4834SchoolDatabase2.Models.Student> Students { get; set; }
+
+        public System.Data.Entity.DbSet<COP4834SchoolDatabase2.Models.Course> Courses { get; set; }
+
+        public System.Data.Entity.DbSet<COP4834SchoolDatabase2.Models.CourseRoster> CourseRosters { get; set; }
     }
 }
