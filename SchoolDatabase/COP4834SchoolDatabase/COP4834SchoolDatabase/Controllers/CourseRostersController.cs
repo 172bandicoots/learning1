@@ -17,7 +17,8 @@ namespace COP4834SchoolDatabase.Controllers
         // GET: CourseRosters
         public ActionResult Index()
         {
-            return View(db.CourseRosters.ToList());
+            var courseRosters = db.CourseRosters.Include(c => c.Student);
+            return View(courseRosters.ToList());
         }
 
         // GET: CourseRosters/Details/5
@@ -38,6 +39,7 @@ namespace COP4834SchoolDatabase.Controllers
         // GET: CourseRosters/Create
         public ActionResult Create()
         {
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentName");
             return View();
         }
 
@@ -55,6 +57,7 @@ namespace COP4834SchoolDatabase.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentName", courseRoster.StudentID);
             return View(courseRoster);
         }
 
@@ -70,6 +73,7 @@ namespace COP4834SchoolDatabase.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentName", courseRoster.StudentID);
             return View(courseRoster);
         }
 
@@ -86,6 +90,7 @@ namespace COP4834SchoolDatabase.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentName", courseRoster.StudentID);
             return View(courseRoster);
         }
 

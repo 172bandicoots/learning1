@@ -20,7 +20,7 @@ namespace COP4834SchoolDatabase.Models
 
         public int CourseID { get; set; }
 
-  
+        public Student Student { get; set; }
 
 
 
