@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 
@@ -19,7 +20,20 @@ namespace COP4834SchoolDatabase.Models
         {
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
+
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+
         public System.Data.Entity.DbSet<COP4834SchoolDatabase.Models.Student> Students { get; set; }
+
+        public System.Data.Entity.DbSet<COP4834SchoolDatabase.Models.Section> Sections { get; set; }
 
         public System.Data.Entity.DbSet<COP4834SchoolDatabase.Models.Course> Courses { get; set; }
 

@@ -17,7 +17,7 @@ namespace COP4834SchoolDatabase.Controllers
         // GET: CourseRosters
         public ActionResult Index()
         {
-            var courseRosters = db.CourseRosters.Include(c => c.Student);
+            var courseRosters = db.CourseRosters.Include(c => c.Courses).Include(c => c.Students);
             return View(courseRosters.ToList());
         }
 
@@ -39,6 +39,7 @@ namespace COP4834SchoolDatabase.Controllers
         // GET: CourseRosters/Create
         public ActionResult Create()
         {
+            ViewBag.CourseID = new SelectList(db.Courses, "CoursetID", "CourseTitle");
             ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentName");
             return View();
         }
@@ -48,7 +49,7 @@ namespace COP4834SchoolDatabase.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RosterID,SectionTitle,StudentID,CourseID")] CourseRoster courseRoster)
+        public ActionResult Create([Bind(Include = "RosterID,StudentID,CourseID")] CourseRoster courseRoster)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +58,7 @@ namespace COP4834SchoolDatabase.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CourseID = new SelectList(db.Courses, "CoursetID", "CourseTitle", courseRoster.CourseID);
             ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentName", courseRoster.StudentID);
             return View(courseRoster);
         }
@@ -73,6 +75,7 @@ namespace COP4834SchoolDatabase.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CourseID = new SelectList(db.Courses, "CoursetID", "CourseTitle", courseRoster.CourseID);
             ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentName", courseRoster.StudentID);
             return View(courseRoster);
         }
@@ -82,7 +85,7 @@ namespace COP4834SchoolDatabase.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RosterID,SectionTitle,StudentID,CourseID")] CourseRoster courseRoster)
+        public ActionResult Edit([Bind(Include = "RosterID,StudentID,CourseID")] CourseRoster courseRoster)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +93,7 @@ namespace COP4834SchoolDatabase.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CourseID = new SelectList(db.Courses, "CoursetID", "CourseTitle", courseRoster.CourseID);
             ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentName", courseRoster.StudentID);
             return View(courseRoster);
         }

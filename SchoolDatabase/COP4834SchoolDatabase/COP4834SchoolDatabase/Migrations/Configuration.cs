@@ -10,7 +10,6 @@ namespace COP4834SchoolDatabase.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "COP4834SchoolDatabase.Models.db3Context";
         }
 
         protected override void Seed(COP4834SchoolDatabase.Models.db3Context context)

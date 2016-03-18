@@ -13,7 +13,7 @@ namespace COP4834SchoolDatabase.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201603142139063_r1"; }
+            get { return "201603182050025_r1"; }
         }
         
         string IMigrationMetadata.Source

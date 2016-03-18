@@ -13,6 +13,7 @@ namespace COP4834SchoolDatabase.Models
 
         [Display(Name = "Student Name"), Required]
         public String StudentName { get; set; }
-        public List<CourseRoster> CourseRosters { get; set; }
+
+        public List<CourseRoster> CourseRosters { get; set; } // 1:n relationship with Course Rosters
     }
 }
