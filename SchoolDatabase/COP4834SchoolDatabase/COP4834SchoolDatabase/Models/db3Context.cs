@@ -20,13 +20,12 @@ namespace COP4834SchoolDatabase.Models
         {
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+       protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
-
+         //  modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
+  
             base.OnModelCreating(modelBuilder);
         }
 
