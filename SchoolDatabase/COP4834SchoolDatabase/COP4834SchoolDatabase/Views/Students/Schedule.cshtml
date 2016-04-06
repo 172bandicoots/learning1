@@ -1,0 +1,26 @@
+﻿@model COP4834SchoolDatabase.Models.Student
+
+
+@{
+    ViewBag.Title = "Student Schedule";
+}
+
+<h2>Details</h2>
+
+
+<h4>Student Schedule for: <b> @Html.DisplayFor(model => model.StudentName) </b> </h4>
+<hr />
+
+@foreach (var item in ViewBag.CourseRosters)
+{
+    if (Model.StudentName == item.Students.StudentName)
+    {
+        @item.Courses.CourseTitle <br />
+    }
+}
+
+<hr />
+<p>
+    <br />
+    @Html.ActionLink("Back to Student List", "Index")
+</p>

@@ -1,11 +1,14 @@
 ﻿@model IEnumerable<COP4834SchoolDatabase.Models.Student>
-
 @{
     ViewBag.Title = "Index";
 }
-
 <h2>Index</h2>
-
+<script type="text/javascript">
+    function showSchedule(_Name) {
+        document.getElementById('schedule').style = "visible: block;";
+        document.getElementById('schedule').innerHTML = _Name;
+    }
+</script>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -25,13 +28,11 @@
 
                 <div id="show" style="display: none;">
                     @foreach (var item2 in ViewBag.CourseRosters)
-                    {
-              
+                    {   
                         if (item.StudentName == item2.Students.StudentName)
                         {
                             @item2.Courses.CourseTitle <br />
                         }
-                       
                     }
                 </div>
             </td>
@@ -39,12 +40,11 @@
                 @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.StudentID }) |
-                <a href="#">View Schedule</a>
+                @Html.ActionLink("Printable Schedule", "Schedule", new { id = item.StudentID}) |
+                <a href="#" onclick="showSchedule('@item.StudentName')" value="'@item.StudentName'">Schedule</a>
             </td>
         </tr>
-
     }
-
-
-
 </table>
+
+    <div id="schedule" style="display: none; font-size: large"></div>
