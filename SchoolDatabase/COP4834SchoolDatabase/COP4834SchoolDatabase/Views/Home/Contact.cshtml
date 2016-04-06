@@ -1,17 +1,165 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Sandbox";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+
+<h3>Date and times - Razor</h3>
+<table border="1">
+    <tr>
+        <th width="100px">Name</th>
+        <td width="100px">Value</td>
+    </tr>
+    <tr>
+        <td>Day</td>
+        <td>@DateTime.Now.Day</td>
+    </tr>
+    <tr>
+        <td>Hour</td>
+        <td>@DateTime.Now.Hour</td>
+    </tr>
+    <tr>
+        <td>Minute</td>
+        <td>@DateTime.Now.Minute</td>
+    </tr>
+    <tr>
+        <td>Second</td>
+        <td>@DateTime.Now.Second</td>
+    </tr>
+    </td>
+</table>
+
+@{
+    var txt = "";
+    if (DateTime.Now.Hour > 12)
+    { txt = "Good Evening"; }
+    else
+    { txt = "Good Morning"; }
+}
+
+
+<p><br />I say @txt to you Sir or Madam!  And, this message will change depending on the time of day!</p>
+
+
+<p>IF POST</p>
+@{
+    var totalMessage = "";
+    if (IsPost)
+    {
+        var num1 = Request["text1"];
+        var num2 = Request["text2"];
+        var total = num1.AsInt() + num2.AsInt();
+        totalMessage = "Total = " + total;
+    }
+}
+<hr />
+<p>MATH IN A FORM</p>
+
+<div style="background-color: beige; font-family: Verdana, Arial;">
+    <form action="" method="post">
+        <p>
+            <label for="text1">First Number:</label><br>
+            <input type="text" name="text1" />
+        </p>
+        <p>
+            <label for="text2">Second Number:</label><br>
+            <input type="text" name="text2" />
+        </p>
+        <p><input type="submit" value=" Add " /></p>
+    </form>
+    <p>@totalMessage</p>
+</div>
+<hr />
+<p>FOR LOOP</p>
+@for (var i = 10; i < 21; i++)
+{<p>Line @i</p>}
+
+
+<hr />
+<p>FOR EACH LOOP</p>
+
+<ul>
+    @foreach (var x in Request.ServerVariables)
+    {
+        <li>@x</li>}
+</ul>
+
+<hr />
+<p>WHILE LOOP-----------------------</p>
+
+@{
+    var q = 0;
+    while (q < 5)
+    {
+        q += 1;
+        <p>Line @q</p>
+    }
+}
+
+<hr />
+<p>ARRAY -------------</p>
+
+@{
+    string[] members = { "Jani", "Hege", "Kai", "Jim" };
+    int g = Array.IndexOf(members, "Kai") + 1;
+    int len = members.Length;
+    string ll = members[2 - 1];
+}
+
+<h3>Members</h3>
+@foreach (var person in members)
+{
+    <p>@person</p>
+}
+<p>The number of names in Members are @len</p>
+<p>The person at position 2 is @ll</p>
+<p>Kai is now in position @g</p>
+
+<hr />
+<p>IF CONDITION</p>
+
+@{var price = 40;}
+<html>
+<body>
+    @if (price > 30)
+    {
+        <p>The price is too high.</p>
+    }
+    else
+    {
+        <p>The price is OK.</p>
+    }
+</body>
+</html>
+
+
+<hr />
+<p>CASE SWITCH CONDITION</p>
+
+@{
+    var weekday = DateTime.Now.DayOfWeek;
+    var day = weekday.ToString();
+    var message = "";
+}
+
+    @switch (day)
+    {
+        case "Monday":
+            message = "This is the first weekday.";
+            break;
+        case "Thursday":
+            message = "Only one day before weekend.";
+            break;
+        case "Friday":
+            message = "Tomorrow is weekend!";
+            break;
+        default:
+            message = "Today is " + day;
+            break;
+    }
+    <p>@message</p>
+
+
+
+

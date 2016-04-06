@@ -5,14 +5,14 @@ namespace COP4834SchoolDatabase.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<COP4834SchoolDatabase.Models.db3Context>
+    internal sealed class Configuration : DbMigrationsConfiguration<COP4834SchoolDatabase.Models.DBContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(COP4834SchoolDatabase.Models.db3Context context)
+        protected override void Seed(COP4834SchoolDatabase.Models.DBContext context)
         {
             //  This method will be called after migrating to the latest version.
 

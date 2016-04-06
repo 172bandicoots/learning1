@@ -12,13 +12,12 @@ namespace COP4834SchoolDatabase.Controllers
 {
     public class CoursesController : Controller
     {
-        private db3Context db = new db3Context();
+        private DBContext db = new DBContext();
 
         // GET: Courses
         public ActionResult Index()
         {
-            var courses = db.Courses.Include(c => c.Sections);
-            return View(courses.ToList());
+            return View(db.Courses.ToList());
         }
 
         // GET: Courses/Details/5
@@ -39,7 +38,6 @@ namespace COP4834SchoolDatabase.Controllers
         // GET: Courses/Create
         public ActionResult Create()
         {
-            ViewBag.SectionID = new SelectList(db.Sections, "SectionID", "SectionName");
             return View();
         }
 
@@ -48,7 +46,7 @@ namespace COP4834SchoolDatabase.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CoursetID,CourseTitle,SectionID")] Course course)
+        public ActionResult Create([Bind(Include = "CoursetID,CourseTitle")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +55,6 @@ namespace COP4834SchoolDatabase.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SectionID = new SelectList(db.Sections, "SectionID", "SectionName", course.SectionID);
             return View(course);
         }
 
@@ -73,7 +70,6 @@ namespace COP4834SchoolDatabase.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.SectionID = new SelectList(db.Sections, "SectionID", "SectionName", course.SectionID);
             return View(course);
         }
 
@@ -82,7 +78,7 @@ namespace COP4834SchoolDatabase.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CoursetID,CourseTitle,SectionID")] Course course)
+        public ActionResult Edit([Bind(Include = "CoursetID,CourseTitle")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +86,6 @@ namespace COP4834SchoolDatabase.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.SectionID = new SelectList(db.Sections, "SectionID", "SectionName", course.SectionID);
             return View(course);
         }
 

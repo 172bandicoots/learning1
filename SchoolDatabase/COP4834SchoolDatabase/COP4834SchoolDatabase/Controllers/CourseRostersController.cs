@@ -12,7 +12,7 @@ namespace COP4834SchoolDatabase.Controllers
 {
     public class CourseRostersController : Controller
     {
-        private db3Context db = new db3Context();
+        private DBContext db = new DBContext();
 
         // GET: CourseRosters
         public ActionResult Index()

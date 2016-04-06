@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>COP4834 Assignment 5</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="icon" type="image/png" href="~/Content/favicon.png" />
+    <link rel="icon" type="image/ico" href="~/Content/favicon.ico" />
  
 </head>
 <body>
@@ -18,18 +18,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Assignment 4", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Assignment 5", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                   @*  <li>@Html.ActionLink("About", "About", "Home")</li>
-                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li> *@
+                    @*  <li>@Html.ActionLink("About", "About", "Home")</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Home")</li> *@
                     <li>@Html.ActionLink("Course Enrollment", "Index", "CourseRosters")</li>
                     <li>@Html.ActionLink("Students", "Index", "Students")</li>
                     <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
-                    <li>@Html.ActionLink("Course Section", "Index", "Sections")</li>
+                    <!-- put more here!-->
+
                 </ul>
+               
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -38,7 +40,8 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - 172bandicoots nocturnal</p>
+            <hr/>
+            <p>&copy; 2015 - 172bandicoots nocturnal</p>
         </footer>
     </div>
 

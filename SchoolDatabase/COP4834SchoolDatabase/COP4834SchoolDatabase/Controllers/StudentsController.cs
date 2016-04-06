@@ -12,11 +12,12 @@ namespace COP4834SchoolDatabase.Controllers
 {
     public class StudentsController : Controller
     {
-        private db3Context db = new db3Context();
+        private DBContext db = new DBContext();
 
         // GET: Students
         public ActionResult Index()
         {
+            ViewBag.CourseRosters = db.CourseRosters.Include(c => c.Courses).Include(c => c.Students);
             return View(db.Students.ToList());
         }
 
@@ -32,6 +33,21 @@ namespace COP4834SchoolDatabase.Controllers
             {
                 return HttpNotFound();
             }
+            return View(student);
+        }
+        // GET: Schedule
+        public ActionResult Schedule(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Student student = db.Students.Find(id);
+            if (student == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.CourseRosters = db.CourseRosters.Include(c => c.Courses).Include(c => c.Students);
             return View(student);
         }
 

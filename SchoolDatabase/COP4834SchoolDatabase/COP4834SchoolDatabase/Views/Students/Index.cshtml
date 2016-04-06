@@ -17,17 +17,34 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StudentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StudentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.StudentID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName) <br />
+
+                <div id="show" style="display: none;">
+                    @foreach (var item2 in ViewBag.CourseRosters)
+                    {
+              
+                        if (item.StudentName == item2.Students.StudentName)
+                        {
+                            @item2.Courses.CourseTitle <br />
+                        }
+                       
+                    }
+                </div>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.StudentID }) |
+                <a href="#">View Schedule</a>
+            </td>
+        </tr>
+
+    }
+
+
 
 </table>

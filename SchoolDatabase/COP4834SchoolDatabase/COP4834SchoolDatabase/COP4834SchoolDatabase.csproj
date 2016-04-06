@@ -170,15 +170,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CourseRostersController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
-    <Compile Include="Controllers\SectionsController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Migrations\201603312032272_initial.cs" />
+    <Compile Include="Migrations\201603312032272_initial.Designer.cs">
+      <DependentUpon>201603312032272_initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Models\CourseRoster.cs" />
-    <Compile Include="Models\db3Context.cs" />
-    <Compile Include="Models\Section.cs" />
+    <Compile Include="Models\DBContext.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -194,7 +196,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\diagram.png" />
     <Content Include="Content\favicon.ico" />
-    <Content Include="Content\favicon.png" />
+    <Content Include="Content\Site - Copy.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -258,16 +260,13 @@
     <Content Include="Views\Courses\Details.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Index.cshtml" />
-    <Content Include="Views\Sections\Create.cshtml" />
-    <Content Include="Views\Sections\Delete.cshtml" />
-    <Content Include="Views\Sections\Details.cshtml" />
-    <Content Include="Views\Sections\Edit.cshtml" />
-    <Content Include="Views\Sections\Index.cshtml" />
     <Content Include="Views\CourseRosters\Create.cshtml" />
     <Content Include="Views\CourseRosters\Delete.cshtml" />
     <Content Include="Views\CourseRosters\Details.cshtml" />
     <Content Include="Views\CourseRosters\Edit.cshtml" />
     <Content Include="Views\CourseRosters\Index.cshtml" />
+    <Content Include="Views\CourseRosters\StudentSchedule.cshtml" />
+    <Content Include="Views\Students\Schedule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -279,6 +278,11 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603312032272_initial.resx">
+      <DependentUpon>201603312032272_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
