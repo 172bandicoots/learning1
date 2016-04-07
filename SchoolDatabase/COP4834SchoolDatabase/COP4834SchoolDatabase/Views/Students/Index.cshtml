@@ -1,17 +1,37 @@
 ﻿@model IEnumerable<COP4834SchoolDatabase.Models.Student>
+
 @{
     ViewBag.Title = "Index";
 }
-<h2>Index</h2>
-<script type="text/javascript">
-    function showSchedule(_Name) {
-        document.getElementById('schedule').style = "visible: block;";
-        document.getElementById('schedule').innerHTML = _Name;
+
+
+<style>
+    .student {
+      cursor: pointer; 
     }
+    .student:hover{
+        text-decoration: underline;
+    }
+    .sched {
+      display: none;
+      margin-left: 25px;
+    }
+</style>
+
+<script>
+$(document).ready(function(){
+    $(".student").click(function(){
+        $(this).next(".sched").toggle(); 
+    });
+});
 </script>
+
+<h2>Index</h2>
+
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add New Student", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -24,27 +44,23 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.StudentName) <br />
+                <span class="student" title="Click for schedule">@Html.DisplayFor(modelItem => item.StudentName) </span> <br />
 
-                <div id="show" style="display: none;">
+                <div class="sched">
                     @foreach (var item2 in ViewBag.CourseRosters)
-                    {   
+                    {
                         if (item.StudentName == item2.Students.StudentName)
                         {
                             @item2.Courses.CourseTitle <br />
                         }
                     }
                 </div>
-            </td>
-            <td>
+
+<td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.StudentID }) |
-                @Html.ActionLink("Printable Schedule", "Schedule", new { id = item.StudentID}) |
-                <a href="#" onclick="showSchedule('@item.StudentName')" value="'@item.StudentName'">Schedule</a>
+                @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
             </td>
         </tr>
     }
 </table>
-
-    <div id="schedule" style="display: none; font-size: large"></div>

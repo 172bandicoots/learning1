@@ -1,0 +1,79 @@
+﻿@model IEnumerable<TimeSheet.Models.TimeLog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>USER VIEW</h2>
+
+
+<p>
+@{ <input type="text" id="name"/>
+   <button type="button" onclick="">Find User Log Entries!</button>
+}
+<br/><br/>
+</p>
+
+<script>
+
+</script>
+
+<div id="test">
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Clients.CompanyName)
+        </th>
+       <th>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </th> 
+        <th>
+            @Html.DisplayNameFor(model => model.WorkDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberHours)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobNote)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        @*if(modelItem => item.Associates.FirstName == ) *@
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Clients.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeStamp)
+        </td> 
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberHours)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobNote)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LogID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LogID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LogID })
+        </td>
+    </tr>
+}
+
+</table>
+</div>
+    

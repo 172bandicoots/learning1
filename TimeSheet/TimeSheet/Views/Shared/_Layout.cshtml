@@ -3,16 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COP4834 Assignment 5</title>
+   @* <title>@ViewBag.Title - My ASP.NET Application</title> *@
+    <title>Home - TimeSheet</title>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="icon" type="image/ico" href="~/Content/favicon.ico" />
- 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+    <link rel="icon" type="image/png" href="~/Content/favicon.png" />
 
 </head>
 <body>
@@ -24,30 +21,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Assignment 5", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+              
+                @Html.ActionLink("TimeSheet", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    @*  <li>@Html.ActionLink("About", "About", "Home")</li>
-            <li>@Html.ActionLink("Contact", "Contact", "Home")</li> *@
-                    <li>@Html.ActionLink("Course Enrollment", "Index", "CourseRosters")</li>
-                    <li>@Html.ActionLink("Students", "Index", "Students")</li>
-                    <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
-                    <!-- put more here!-->
-
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Associates", "Index", "Associates")</li>
+                    <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
+                    <li>@Html.ActionLink("Master Time Sheet", "Index", "TimeLogs")</li>
+                    @* <li>@Html.ActionLink("Contact", "Contact", "Home")</li> *@
                 </ul>
-               
                 @Html.Partial("_LoginPartial")
-            </div>
+           </div> 
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <hr/>
-            <p>&copy; 2015 - 172bandicoots nocturnal</p>
+            <p>&copy; @DateTime.Now.Year - 172bandicoots nocturnal</p>
         </footer>
     </div>
 
