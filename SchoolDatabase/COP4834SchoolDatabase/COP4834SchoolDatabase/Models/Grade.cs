@@ -19,5 +19,8 @@ namespace COP4834SchoolDatabase.Models
        [ForeignKey("Assignments")] // foreign key value
        public int AssignmentID { get; set; } // what I am getting
        public Assignment Assignments { get; set; }  //where it gets it from  create object course and passing object into foreign key
+
+        public int Score { get; set; }
+
     }
 }

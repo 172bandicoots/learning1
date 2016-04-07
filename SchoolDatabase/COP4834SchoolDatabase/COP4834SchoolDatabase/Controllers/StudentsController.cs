@@ -35,6 +35,23 @@ namespace COP4834SchoolDatabase.Controllers
             }
             return View(student);
         }
+        // GET: Schedule
+        public ActionResult Schedule(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Student student = db.Students.Find(id);
+            if (student == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.CourseRosters = db.CourseRosters.Include(c => c.Courses).Include(c => c.Students);
+            return View(student);
+        }
+
+
 
         // GET: Students/Create
         public ActionResult Create()

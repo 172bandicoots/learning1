@@ -49,7 +49,7 @@ namespace COP4834SchoolDatabase.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GradeID,StudentID,AssignmentID")] Grade grade)
+        public ActionResult Create([Bind(Include = "GradeID,StudentID,AssignmentID,Score")] Grade grade)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace COP4834SchoolDatabase.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GradeID,StudentID,AssignmentID")] Grade grade)
+        public ActionResult Edit([Bind(Include = "GradeID,StudentID,AssignmentID,Score")] Grade grade)
         {
             if (ModelState.IsValid)
             {
