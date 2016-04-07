@@ -21,7 +21,7 @@
 <script>
 $(document).ready(function(){
     $(".student").click(function(){
-        $(this).next(".sched").toggle(); 
+        $(this).next().toggle(); 
     });
 });
 </script>
@@ -44,7 +44,7 @@ $(document).ready(function(){
     {
         <tr>
             <td>
-                <span class="student" title="Click for schedule">@Html.DisplayFor(modelItem => item.StudentName) </span> <br />
+                <span class="student" title="Click for schedule">@Html.DisplayFor(modelItem => item.StudentName) </span>
 
                 <div class="sched">
                     @foreach (var item2 in ViewBag.CourseRosters)
@@ -55,7 +55,6 @@ $(document).ready(function(){
                         }
                     }
                 </div>
-
 <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |

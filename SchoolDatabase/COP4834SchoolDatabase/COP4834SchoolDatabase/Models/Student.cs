@@ -15,5 +15,6 @@ namespace COP4834SchoolDatabase.Models
         public String StudentName { get; set; }
 
         public List<CourseRoster> CourseRosters { get; set; } // 1:n relationship with Course Rosters
+        public List<Grade> Grades { get; set; } //1:n relationship with Grade
     }
 }

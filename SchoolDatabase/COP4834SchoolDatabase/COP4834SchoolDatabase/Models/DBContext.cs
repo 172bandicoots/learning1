@@ -41,6 +41,8 @@ namespace COP4834SchoolDatabase.Models
             base.OnModelCreating(modelBuilder);
         }
 
+        public System.Data.Entity.DbSet<COP4834SchoolDatabase.Models.Assignment> Assignments { get; set; }
 
+        public System.Data.Entity.DbSet<COP4834SchoolDatabase.Models.Grade> Grades { get; set; }
     }
 }
