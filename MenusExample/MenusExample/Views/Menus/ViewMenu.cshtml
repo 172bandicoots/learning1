@@ -1,0 +1,46 @@
+﻿@model COP4709MenuDatabase.Models.Menu
+
+@{
+    ViewBag.Title = "ViewMenu";
+}
+
+<!--Displays the title of the referenced menu-->
+
+<h2>
+    Custom&nbsp;@Html.DisplayFor(modelItem => @Model.MenuTitle)&nbsp;
+    Menu
+</h2>
+
+
+<!--Custom table with only what you want on it
+    NOTE: by adding existing class "table" the formatting from the theme is applied
+    to the table... making it match the rest of website style-->
+    <div>
+        <table class="table">
+            <tr>
+                <th>Item Name</th>
+                <th>Description</th>
+                <th>Cost</th>
+            </tr>
+
+            @foreach (var item in Model.MenuItems)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MenuItemTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MenuItemDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MenuItemCost)
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>

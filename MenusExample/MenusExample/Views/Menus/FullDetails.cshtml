@@ -1,0 +1,71 @@
+﻿@model COP4709MenuDatabase.Models.Menu
+
+@{
+    ViewBag.Title = "FullDetails";
+}
+
+<script type="text/javascript">
+
+    function selectMenuGroup() {
+        var dd = document.getElementById("MenuGroup");
+        var index = dd.selectedIndex;
+        var value = dd.options[index].value;
+        var text = dd.options[index].text;
+
+        $.ajax({
+            url: '/MenuGroups/GetMenuGroup',
+            type: 'POST',
+            datatype: 'text',
+            data: { id: value },
+            success: function (data) {
+                $("#menugroup").html(data);
+            },
+            error: function (data) {
+                alert("Call was unsuccessful " + data)
+            }
+        });
+
+    }
+
+</script>
+
+<h2>FullDetails</h2>
+
+<div>
+    <h4>Menu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuDescription)
+        </dd>
+
+        <dt>
+            Select a Menu Group
+        </dt>
+
+        <dd>
+            @Html.DropDownList("MenuGroup", new SelectList(Model.MenuGroups,
+                "MenuGroupId", "MenuGroupTitle"),
+                new { onchange = "selectMenuGroup()" })
+        </dd>
+
+    </dl>
+</div>
+
+<p id="menugroup"></p>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MenuID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
