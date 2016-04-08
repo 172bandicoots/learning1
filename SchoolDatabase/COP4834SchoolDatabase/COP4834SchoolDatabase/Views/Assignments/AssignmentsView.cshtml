@@ -8,7 +8,7 @@
         margin-left: 5px;
     }
 </style>
-<h2>Index</h2>
+<h2>Custom View</h2>
 <table class="table">
     <tr>
         <th>
@@ -22,20 +22,30 @@
         }
     </tr>   
 @foreach (var stdName in ViewBag.Students)
-{
+{ //Loops through students creating a new row foreach
     <tr>
         <td>
             @stdName.StudentName
-        </td>       
-        @foreach (var stdScore in ViewBag.Grades)
-        {
-            if (stdName.StudentID == stdScore.StudentID) {
-                <td>
-                    <span class="cell">@stdScore.Score</span>
-                </td>
+        </td>
+        @foreach (var item in Model)
+        { // Loop through assignments 
+            // Look for grade foreach assignment
+            var found = false; // hasn't found grade yet
+            foreach (var stdScore in ViewBag.Grades)
+            { // loop through the grades for search
+                if (stdName.StudentID == stdScore.StudentID && item.AssignmentID == stdScore.AssignmentID)
+                {
+                        found = true;
+                        <td>
+                            <span class="cell">@stdScore.Score</span>
+                        </td>
+                }
+            }
+            if (found == false)
+            {
+                <td></td>
             }
         }
-
     </tr>
 }
 </table>
