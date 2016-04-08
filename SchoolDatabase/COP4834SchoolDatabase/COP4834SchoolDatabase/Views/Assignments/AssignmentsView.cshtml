@@ -1,0 +1,40 @@
+﻿@model IEnumerable<COP4834SchoolDatabase.Models.Assignment>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .cell{
+        margin-left: 10px;
+    }
+</style>
+<h2>Index</h2>
+@foreach(var test in ViewBag.Grades)
+{
+    <span>Q</span>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            <span class="cell">Name</span>
+        </th>
+
+        <th>
+            @foreach (var item in Model)
+            {
+                <span class="cell"> @Html.DisplayFor(modelItem => item.AssignmentName) </span>
+            }
+        </th>
+    </tr>
+  
+    
+        <!--for each score in assignments horizontally-->
+   
+
+
+
+
+</table>
+@*
+@foreach (var item2 in ViewBag.AssignmentsView) *@

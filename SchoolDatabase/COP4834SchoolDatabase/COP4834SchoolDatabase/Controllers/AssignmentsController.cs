@@ -20,6 +20,14 @@ namespace COP4834SchoolDatabase.Controllers
             return View(db.Assignments.ToList());
         }
 
+
+        // GET: AssignmentsView
+        public ActionResult AssignmentsView()
+        {
+            ViewBag.Grades = db.Grades.Include(c => c.Assignments).Include(c => c.Students);
+            return View(db.Assignments.ToList());
+        }
+
         // GET: Assignments/Details/5
         public ActionResult Details(int? id)
         {

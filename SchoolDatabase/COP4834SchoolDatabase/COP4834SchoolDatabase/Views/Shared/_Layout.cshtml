@@ -29,16 +29,17 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    @*  <li>@Html.ActionLink("About", "About", "Home")</li>
-            <li>@Html.ActionLink("Contact", "Contact", "Home")</li> *@
                     <li>@Html.ActionLink("Course Enrollment", "Index", "CourseRosters")</li>
                     <li>@Html.ActionLink("Students", "Index", "Students")</li>
                     <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
+                    <li>@Html.ActionLink("Assignments", "Index", "Assignments")</li>
+                    <li>@Html.ActionLink("Grades", "Index", "Grades")</li>
+                    <li>@Html.ActionLink("Grades View", "AssignmentsView", "Assignments")</li>
                     <!-- put more here!-->
 
                 </ul>
                
-                @Html.Partial("_LoginPartial")
+               @* @Html.Partial("_LoginPartial") *@
             </div>
         </div>
     </div>
