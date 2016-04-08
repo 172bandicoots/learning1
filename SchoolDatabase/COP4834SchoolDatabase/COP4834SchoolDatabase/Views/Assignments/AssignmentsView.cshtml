@@ -5,36 +5,37 @@
 }
 <style>
     .cell{
-        margin-left: 10px;
+        margin-left: 5px;
     }
 </style>
 <h2>Index</h2>
-@foreach(var test in ViewBag.Grades)
-{
-    <span>Q</span>
-}
-
 <table class="table">
     <tr>
         <th>
-            <span class="cell">Name</span>
+           <span class="cell">Name</span>
         </th>
-
-        <th>
-            @foreach (var item in Model)
-            {
-                <span class="cell"> @Html.DisplayFor(modelItem => item.AssignmentName) </span>
+        @foreach (var item in Model)
+        {
+          <th>
+            <span class="cell"> @Html.DisplayFor(modelItem => item.AssignmentName) </span>
+          </th>
+        }
+    </tr>   
+@foreach (var stdName in ViewBag.Students)
+{
+    <tr>
+        <td>
+            @stdName.StudentName
+        </td>       
+        @foreach (var stdScore in ViewBag.Grades)
+        {
+            if (stdName.StudentID == stdScore.StudentID) {
+                <td>
+                    <span class="cell">@stdScore.Score</span>
+                </td>
             }
-        </th>
+        }
+
     </tr>
-  
-    
-        <!--for each score in assignments horizontally-->
-   
-
-
-
-
+}
 </table>
-@*
-@foreach (var item2 in ViewBag.AssignmentsView) *@

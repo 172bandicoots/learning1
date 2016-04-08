@@ -109,9 +109,10 @@ namespace COP4834SchoolDatabase.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Course course = db.Courses.Find(id);
-            db.Courses.Remove(course);
-            db.SaveChanges();
+            //Course course = db.Courses.Find(id);
+            // db.Courses.Remove(course);
+            // db.SaveChanges();
+            db.DeleteCourse(id);
             return RedirectToAction("Index");
         }
 

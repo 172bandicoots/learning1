@@ -25,6 +25,7 @@ namespace COP4834SchoolDatabase.Controllers
         public ActionResult AssignmentsView()
         {
             ViewBag.Grades = db.Grades.Include(c => c.Assignments).Include(c => c.Students);
+            ViewBag.Students = db.Students;  //???
             return View(db.Assignments.ToList());
         }
 
@@ -117,9 +118,10 @@ namespace COP4834SchoolDatabase.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Assignment assignment = db.Assignments.Find(id);
-            db.Assignments.Remove(assignment);
-            db.SaveChanges();
+            //Assignment assignment = db.Assignments.Find(id);
+            // db.Assignments.Remove(assignment);
+            //db.SaveChanges();
+            db.DeleteAssignment(id);
             return RedirectToAction("Index");
         }
 
