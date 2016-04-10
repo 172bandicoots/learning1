@@ -3,49 +3,57 @@
 @{
     ViewBag.Title = "Index";
 }
+<h2> Grades View</h2>
 <style>
-    .cell{
+    .cell_alt{
         margin-left: 5px;
     }
 </style>
-<h2>Custom View</h2>
-<table class="table">
+<h2>Grades View</h2>
+<div class="table-responsive">
+<table border="1" class="table">
     <tr>
-        <th>
-           <span class="cell">Name</span>
+        <!--create the header row-->
+        <th style="background-color: gainsboro">
+            <span class="cell_alt">Student</span>
         </th>
         @foreach (var item in Model)
         {
-          <th>
-            <span class="cell"> @Html.DisplayFor(modelItem => item.AssignmentName) </span>
-          </th>
-        }
-    </tr>   
-@foreach (var stdName in ViewBag.Students)
-{ //Loops through students creating a new row foreach
-    <tr>
-        <td>
-            @stdName.StudentName
-        </td>
-        @foreach (var item in Model)
-        { // Loop through assignments 
-            // Look for grade foreach assignment
-            var found = false; // hasn't found grade yet
-            foreach (var stdScore in ViewBag.Grades)
-            { // loop through the grades for search
-                if (stdName.StudentID == stdScore.StudentID && item.AssignmentID == stdScore.AssignmentID)
-                {
-                        found = true;
-                        <td>
-                            <span class="cell">@stdScore.Score</span>
-                        </td>
-                }
-            }
-            if (found == false)
-            {
-                <td></td>
-            }
+            <th style="text-align: center; background-color: gainsboro">
+                
+                    @Html.DisplayFor(modelItem => item.AssignmentName)
+               
+            </th>
         }
     </tr>
-}
-</table>
+    
+    @foreach (var stdName in ViewBag.Students)
+       
+        { //Loops through students creating a new row foreach
+        <tr>
+            <td>
+                @stdName.StudentName
+            </td>
+            @foreach (var item in Model)
+            { // Loop through assignments
+              // Look for grade foreach assignment
+                var found = false; // hasn't found grade yet
+                foreach (var stdScore in ViewBag.Grades)
+                { // loop through the grades for search
+                    if (stdName.StudentID == stdScore.StudentID && item.AssignmentID == stdScore.AssignmentID)
+                    {
+                        found = true;
+                        <td align="center">
+                            <span >@stdScore.Score</span>
+                        </td>
+                    }
+                }
+                if (found == false)
+                {
+                    <td align="center">-</td>
+                }
+            }
+        </tr>
+        }
+    </table>
+    </div>

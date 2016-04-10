@@ -4123,6 +4123,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     box-shadow: none;
   }
   .navbar-collapse.collapse {
+      text-align: center;
     display: block !important;
     height: auto !important;
     padding-bottom: 0;
@@ -4239,7 +4240,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-nav {
-  margin: 7.5px -15px;
+  /*margin: 7.5px -15px;*/
+      display: inline-block;
+    float: none;
+    margin: 0;
+
 }
 
 .navbar-nav > li > a {

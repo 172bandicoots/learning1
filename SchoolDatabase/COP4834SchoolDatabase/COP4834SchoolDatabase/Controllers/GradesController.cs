@@ -83,7 +83,7 @@ namespace COP4834SchoolDatabase.Controllers
                     {
                         if (!(item.AssignmentID == grade.AssignmentID && item.StudentID == grade.StudentID))
                         {
-                            Debug.Write(item.AssignmentID + " " + item.StudentID);
+                          
                             //This student does not have a grade for this assignment so add the record    
                             db.Grades.Add(grade);
                         }
