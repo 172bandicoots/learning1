@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using COP4834SchoolDatabase.Models;
+using System.Diagnostics;
+using System.Data.Entity.Core.Metadata.Edm;
 
 namespace COP4834SchoolDatabase.Controllers
 {
@@ -26,6 +28,11 @@ namespace COP4834SchoolDatabase.Controllers
         {
             var grades = db.Grades.Include(g => g.Assignments).Include(g => g.Students);
             return View(grades.ToList());
+        }
+        // GET: grade message for when create is denied due to custom logic
+        public ActionResult grade_message()
+        {
+            return View("grade_message");
         }
 
         // GET: Grades/Details/5
@@ -60,9 +67,36 @@ namespace COP4834SchoolDatabase.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Grades.Add(grade);
+                //Determine if there the student already has a recorded grade for this assignment
+                //If so, do not create new.  Use EDIT for the record instead.
+                //otherwise grades will stack
+               
+                var total = db.Database.SqlQuery<int>("SELECT COUNT(*) FROM dbo.Grades").Single();
+                if (total == 0)
+                {
+                    //no grade exists for anyone, so no check needs to be done before adding
+                    db.Grades.Add(grade);
+                }
+                else
+                {
+                    foreach (var item in db.Grades)
+                    {
+                        if (!(item.AssignmentID == grade.AssignmentID && item.StudentID == grade.StudentID))
+                        {
+                            Debug.Write(item.AssignmentID + " " + item.StudentID);
+                            //This student does not have a grade for this assignment so add the record    
+                            db.Grades.Add(grade);
+                        }
+                        else
+                        {
+                            //this student already has a grade for this assignment
+                            return RedirectToAction("grade_message");
+                        }
+                    }
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
             }
 
             ViewBag.AssignmentID = new SelectList(db.Assignments, "AssignmentID", "AssignmentName", grade.AssignmentID);

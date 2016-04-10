@@ -282,6 +282,7 @@
     <Content Include="Views\Grades\Edit.cshtml" />
     <Content Include="Views\Grades\Index.cshtml" />
     <Content Include="Views\Assignments\AssignmentsView.cshtml" />
+    <Content Include="Views\Grades\grade_message.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
